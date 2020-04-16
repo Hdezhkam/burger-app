@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Aux from '../../hoc/Auxiliary';
+import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -31,10 +31,8 @@ class BurgerBuilder extends Component {
 
         const sum = Object.keys(ingredients) //create array from state object
             .map(igKey => {
-                console.log(ingredients[igKey])
                 return ingredients[igKey]
             }).reduce((sum, el) => {
-                console.log(`totalSum: ${ sum + el}`)
                 return sum + el
             }, 0)
             this.setState({purchaseable: sum >0}) // if sum>0 ==> purchasable: true
