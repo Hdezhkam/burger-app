@@ -3,7 +3,7 @@ import Aux from '../Auxiliary/Auxiliary'
 import Modal from '../../components/UI/Modal/Modal'
 
 
-const withErrorHandler = (WrappedComponent, Axios) => {
+const withErrorHandler = (WrappedComponent, axios) => {
 
     return class extends Component {
 
@@ -13,24 +13,24 @@ const withErrorHandler = (WrappedComponent, Axios) => {
 
         componentDidMount() {
 
-            this.reqInterceptor = Axios.interceptors.request.use(req => {
+            this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({ error: null })
                 return req
             })
 
-            this.resInterceptor = Axios.interceptors.request.use(res => {
-                Axios.interceptors.response.use(res => res, error => {
+            this.resInterceptor = axios.interceptors.request.use(res => {
+                axios.interceptors.response.use(res => res, error => {
                     this.setState({ error: error })
                 })
             })
         }
 
-        // componentWillUnmount() {
-        //     Axios.interceptors.request.ejecet(this.reqInterceptor)
-        //     Axios.interceptors.request.ejecet(this.resInterceptor)
-        // }
+        //  componentWillUnmount() {
+        //      axios.interceptors.request.ejecet(this.reqInterceptor)
+        //      axios.interceptors.response.ejecet(this.resInterceptor)
+        //  }
 
-        errorConfirmHandler = () => {
+        errorConfirmedHandler = () => {
             this.setState({ error: null })
             console.log('j');
         }
@@ -40,7 +40,7 @@ const withErrorHandler = (WrappedComponent, Axios) => {
                 <Aux>
                     <Modal
                         show={this.state.error}
-                        modalClosed={this.errorConfirmHandler}
+                        modalClosed={this.errorConfirmedHandler}
                     >
                         {this.state.error ? this.state.error.message : null}
                     </Modal>

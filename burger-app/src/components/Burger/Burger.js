@@ -2,16 +2,17 @@ import React from 'react'
 import classes from './Burger.module.css'
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient'
 
-function Burger(props) {
-
+function  Burger (props) {
+    
     //convert object(state) to array and map to the array
     //{}-->map[[salad],[salad],[bacon],[meat]]-->map[salad]--><BurgerIngredient key={igKey + i} type={igKey} />
     let transformedIngredients = Object.keys(props.ingredients).map(igKey => {
-        return [...Array(props.ingredients[igKey])].map((_, i) => {
+        return [...Array(props.ingredients[igKey])].map( ( _, i) => {
             return <BurgerIngredient key={igKey + i} type={igKey} />
         })
         //calculate number of element
-    }).reduce((arr, el) => {
+    })
+    .reduce((arr, el) => {
         return arr.concat(el)
     }, [])
 
