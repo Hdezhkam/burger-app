@@ -11,8 +11,8 @@ export {
 } from './order'
 
 export {
-    authStart,
-    authSuccess,
-    authFail,
-    auth
+    auth,
+    logout,
+    setAuthRedirectPath,
+    authCheckState
 } from './auth'

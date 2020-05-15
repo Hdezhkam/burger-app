@@ -1,10 +1,11 @@
-import * as actionType from '../../store/actions/actionTypes'
+import * as actionTypes from '../actions/actionTypes'
 import { updateObject } from '../utility'
 
 const initialState = {
     ingredients: null,
     totalPrice: 4,
-    error: false
+    error: false,
+    building: false
 }
 
 const INGREDIENT_PRICES = {
@@ -19,7 +20,8 @@ const addIngredient = (state, action) => {
     const updatedIngredients = updateObject(state.ingredients, updatedIngredient)
     const updatedState = {
         ingredients: updatedIngredients,
-        totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+        totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+        building: true
     }
     return updateObject(state, updatedState)
 }
@@ -29,7 +31,8 @@ const removeIngredient = (state, action) => {
     const updatedIngredients = updateObject(state.ingredients, updatedIngredient)
     const updatedState = {
         ingredients: updatedIngredients,
-        totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+        totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+        building: true
     }
     return updateObject(state, updatedState)
 }
@@ -43,20 +46,21 @@ const setIngredients = (state, action) => {
             meat: action.ingredients.meat
         },
         totalPrice: 4,
-        error: false
+        error: false,
+        building: false
     })
 }
 
-const fetchIngerdientsFailed = (state, action) => {
+const fetchIngredientsFailed = (state, action) => {
     return updateObject(state, { error: true })
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionType.ADD_INGREDIENT: return addIngredient(state, action)
-        case actionType.REMOVE_INGREDIENT: return removeIngredient(state, action)
-        case actionType.SET_INGREDIENTS: return setIngredients (state, action)
-        case actionType.FETCH_INGREDIENTS_FAILED: return fetchIngerdientsFailed (state, action)
+        case actionTypes.ADD_INGREDIENT: return addIngredient(state, action)
+        case actionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action)
+        case actionTypes.SET_INGREDIENTS: return setIngredients (state, action)
+        case actionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed (state, action)
         default: return state
     }
 }
