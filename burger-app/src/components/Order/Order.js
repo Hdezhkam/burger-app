@@ -1,8 +1,8 @@
 import React from 'react'
+
 import classes from './Order.module.css'
 
 const Order = (props) => {
-
     const ingredients = []
 
     for (let ingredientName in props.ingredients) {

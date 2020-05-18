@@ -12,9 +12,9 @@ const Toolbar = (props) => {
             <div className={classes.Logo}>
                 <Logo />
             </div>
-            <div className={classes.DesktopOnly}>
+            <nav className={classes.DesktopOnly}>
                 <NavigationItems isAthenticated={props.isAuth}/>
-            </div>
+            </nav>
         </header>
     )
 }

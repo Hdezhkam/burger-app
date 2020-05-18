@@ -1,8 +1,9 @@
 import React from 'react'
 import classes from './BuildControl.module.css'
 
-const BuildControl = (props) => {
-    return (
+const BuildControl = (props) => (
+
+    
         <div className={classes.BuildControl}>
             <div className={classes.Lable}>{props.lable}</div>
             <button
@@ -18,6 +19,6 @@ const BuildControl = (props) => {
             </button>
         </div>
     )
-}
+
 
 export default BuildControl

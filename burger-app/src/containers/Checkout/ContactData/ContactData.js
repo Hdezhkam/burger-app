@@ -68,7 +68,6 @@ class ContactData extends Component {
                 },
                 valid: false,
                 touched: false
-
             },
             email: {
                 elementType: 'input',
